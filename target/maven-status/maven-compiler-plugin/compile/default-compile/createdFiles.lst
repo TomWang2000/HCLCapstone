@@ -1,0 +1,16 @@
+com\hcl\ecommcapstone\repository\UserRepository.class
+com\hcl\ecommcapstone\entity\ProductCategory.class
+com\hcl\ecommcapstone\service\UserServiceImpl.class
+com\hcl\ecommcapstone\entity\Product.class
+com\hcl\ecommcapstone\entity\UserAddressJunction.class
+com\hcl\ecommcapstone\entity\Address.class
+com\hcl\ecommcapstone\entity\UserRole.class
+com\hcl\ecommcapstone\entity\User.class
+com\hcl\ecommcapstone\entity\Order.class
+com\hcl\ecommcapstone\exception\GlobalException.class
+com\hcl\ecommcapstone\service\UserService.class
+com\hcl\ecommcapstone\EcommcapstoneApplication.class
+com\hcl\ecommcapstone\entity\ShoppingCart.class
+com\hcl\ecommcapstone\dto\UserDto.class
+com\hcl\ecommcapstone\controller\UserController.class
+com\hcl\ecommcapstone\entity\Role.class
