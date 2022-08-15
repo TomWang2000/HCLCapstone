@@ -17,6 +17,10 @@ public interface UserService {
 
 	User getUserByName(String username, String password);
 
+	User getLogin(String username, String password);
+
+	User updateUser(Long userId, UserDto userDto);
+
 	
 	
 }
