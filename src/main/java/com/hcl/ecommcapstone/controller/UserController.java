@@ -25,25 +25,30 @@ public class UserController {
 	public User registerUser(@RequestBody UserDto userDto) {
 		return userService.registerUser(userDto);
 	}
+	
+	@PostMapping("/users/update")
+	public User updateUser(@RequestParam Long userId, @RequestBody UserDto userDto) {
+		return userService.updateUser(userId, userDto);
+	}
 
-	@GetMapping("/{userId}")
+	@GetMapping("/admin/users/{userId}")
 	public User getUser(@PathVariable Long userId) {
 		return userService.getUser(userId);
 	}
 
-	@DeleteMapping("/delete/{userId}")
-	public String deleteUser(@PathVariable Long userId) {
+	@DeleteMapping("/admin/users/delete")
+	public String deleteUser(@RequestParam Long userId) {
 		userService.deleteUser(userId);
 		return "User " + userId + " has been deleted";
 	}
 
-	@GetMapping("/allUsers")
+	@GetMapping("/admin/users/all")
 	public List<User> getAllUsers(int pageNumber, int pageSize) {
 		return userService.getAllUsers(pageNumber, pageSize);
 	}
 
 	@GetMapping("/login")
 	public User getUsers(@RequestParam String username, @RequestParam String password) {
-		return userService.getUserByName(username, password);
+		return userService.getLogin(username, password);
 	}
 }

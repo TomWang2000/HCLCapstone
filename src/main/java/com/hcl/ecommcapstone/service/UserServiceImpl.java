@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.hcl.ecommcapstone.dto.UserDto;
@@ -17,13 +19,31 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserRepository userRepository;
 	
+	@Autowired
+	JavaMailSender javaMailSender;
+	
 	@Override
 	public User registerUser(UserDto userDto) {
 		User user = new User();
 		BeanUtils.copyProperties(userDto, user);
+		emailUser(user.getEmail());
 		return userRepository.save(user);
 	}
+	
+	private void emailUser(String email) {
+        System.out.println("Sending Email...");
 
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(email);
+
+        msg.setSubject("Testing from Spring Boot");
+        msg.setText("Hello World \n Spring Boot Email");
+
+        javaMailSender.send(msg);
+
+        System.out.println("Email Sent.");
+    }
+	
 	@Override
 	public User getUser(Long userId) {
 		Optional<User> user = userRepository.findById(userId);
@@ -43,10 +63,24 @@ public class UserServiceImpl implements UserService {
 	public List<User> getAllUsers(int pageNumber, int pageSize) {
 		return userRepository.findAll();
 	}
+	
+	@Override
+	public User getLogin(String username, String password) {
+		return userRepository.findByUsernameAndPassword(username, password);
+	}
 
 	@Override
 	public User getUserByName(String username, String password) {
-		return userRepository.findByUsernameAndPassword(username, password);
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public User updateUser(Long userId, UserDto userDto) {
+		User user = new User();
+		BeanUtils.copyProperties(userDto, user);
+		return userRepository.save(user);
 	}
 
 	
