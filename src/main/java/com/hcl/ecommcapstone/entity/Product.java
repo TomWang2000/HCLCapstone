@@ -1,6 +1,6 @@
 package com.hcl.ecommcapstone.entity;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,10 +34,10 @@ public class Product {
 	private int stockcount;
 
 	@Column(name = "date_created")
-	private Date datecreated;
+	private LocalDate datecreated;
 
 	@Column(name = "date_last_updated")
-	private Date datelastupdated;
+	private LocalDate datelastupdated;
 
 	@Column(name = "image_url")
 	private String imageurl;

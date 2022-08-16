@@ -26,9 +26,9 @@ public class UserController {
 		return userService.registerUser(userDto);
 	}
 	
-	@PostMapping("/users/update")
-	public User updateUser(@RequestParam Long userId, @RequestBody UserDto userDto) {
-		return userService.updateUser(userId, userDto);
+	@PostMapping("/admin/users/update")
+	public User updateUser(@RequestBody UserDto userDto) {
+		return userService.updateUser(userDto);
 	}
 
 	@GetMapping("/admin/users/{userId}")

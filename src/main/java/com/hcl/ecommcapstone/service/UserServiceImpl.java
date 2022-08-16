@@ -77,10 +77,13 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public User updateUser(Long userId, UserDto userDto) {
-		User user = new User();
-		BeanUtils.copyProperties(userDto, user);
-		return userRepository.save(user);
+	public User updateUser(UserDto userDto) {
+		User user = getUser(userDto.getUserId());
+		if(user != null) {
+			BeanUtils.copyProperties(userDto, user);
+			return userRepository.save(user);
+		}
+		return null;
 	}
 
 	

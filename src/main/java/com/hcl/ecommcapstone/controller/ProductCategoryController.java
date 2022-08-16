@@ -41,4 +41,9 @@ public class ProductCategoryController {
 	public List<ProductCategory> getAllProducts(int pageNumber, int pageSize) {
 		return productCategoryService.getAllProductCategories(pageNumber, pageSize);
 	}
+	
+	@PostMapping("/admin/productcategory/update")
+	public ProductCategory updateProductCategory(@RequestBody ProductCategoryDto productCategoryDto) {
+		return productCategoryService.updateProduct(productCategoryDto);
+	} 
 }

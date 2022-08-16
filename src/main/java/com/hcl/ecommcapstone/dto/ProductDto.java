@@ -2,6 +2,7 @@ package com.hcl.ecommcapstone.dto;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDate;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,15 +11,17 @@ import lombok.Setter;
 @Getter
 public class ProductDto {
 	
+	private long productId;
+	
 	private String productname;
 	
 	private BigDecimal unitprice;
 	
 	private int stockcount;
 	
-	private Date datecreated;
+	private LocalDate datecreated;
 	
-	private Date datelastupdated;
+	private LocalDate datelastupdated;
 	
 	private String imageurl;
 	

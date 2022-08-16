@@ -6,13 +6,9 @@ import lombok.Setter;
 @Setter
 @Getter
 public class ProductCategoryDto {
-
-	private String categoryname;
 	
-	public String getCategoryName() {
-		return categoryname;
-	}
-	public void setCategoryName(String categoryname) {
-		this.categoryname = categoryname;
-	}
+	private Long catergoryId;
+	
+	private String categoryName;
+	
 }

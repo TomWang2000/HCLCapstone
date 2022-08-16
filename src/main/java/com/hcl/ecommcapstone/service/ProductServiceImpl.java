@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hcl.ecommcapstone.dto.ProductDto;
+import com.hcl.ecommcapstone.dto.UserDto;
 import com.hcl.ecommcapstone.entity.Product;
+import com.hcl.ecommcapstone.entity.User;
 import com.hcl.ecommcapstone.repository.ProductRepository;
 
 @Service
@@ -42,6 +44,16 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<Product> getAllProducts(int pageNumber, int pageSize) {
 		return productRepository.findAll();
+	}
+	
+	@Override
+	public Product updateProduct(ProductDto productDto) {
+		Product product = getProduct(productDto.getProductId());
+		if(product != null) {
+			BeanUtils.copyProperties(productDto, product);
+			return productRepository.save(product);
+		}
+		return null;
 	}
 	
 }

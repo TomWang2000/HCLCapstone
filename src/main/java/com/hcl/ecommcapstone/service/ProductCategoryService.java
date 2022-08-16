@@ -15,4 +15,6 @@ public interface ProductCategoryService {
 
 	List<ProductCategory> getAllProductCategories(int pageNumber, int pageSize);
 
+	ProductCategory updateProduct(ProductCategoryDto productCategoryDto);
+
 }

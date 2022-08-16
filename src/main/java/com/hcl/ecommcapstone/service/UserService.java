@@ -19,7 +19,7 @@ public interface UserService {
 
 	User getLogin(String username, String password);
 
-	User updateUser(Long userId, UserDto userDto);
+	User updateUser(UserDto userDto);
 
 	
 	

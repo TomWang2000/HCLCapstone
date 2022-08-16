@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hcl.ecommcapstone.dto.ProductCategoryDto;
+import com.hcl.ecommcapstone.entity.Product;
 import com.hcl.ecommcapstone.entity.ProductCategory;
 import com.hcl.ecommcapstone.repository.ProductCategoryRepository;
 
@@ -41,5 +42,15 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 	@Override
 	public List<ProductCategory> getAllProductCategories(int pageNumber, int pageSize) {
 		return productCategoryRepository.findAll();
+	}
+
+	@Override
+	public ProductCategory updateProduct(ProductCategoryDto productCategoryDto) {
+		ProductCategory productCategory = getProductCategory(productCategoryDto.getCatergoryId());
+		if(productCategory != null) {
+			BeanUtils.copyProperties(productCategoryDto, productCategory);
+			return productCategoryRepository.save(productCategory);
+		}
+		return null;
 	}
 }
