@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo(email);
 
-        msg.setSubject("Testing from Spring Boot");
-        msg.setText("Hello World \n Spring Boot Email");
+        msg.setSubject("User Registration for EcommCapstone Project");
+        msg.setText("Thank you for registration!");
 
         javaMailSender.send(msg);
 

@@ -1,16 +1,24 @@
 package com.hcl.ecommcapstone.entity;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -42,8 +50,10 @@ public class Product {
 	@Column(name = "image_url")
 	private String imageurl;
 
-	@Column(name = "category_id")
-	private Long categoryid;
-
+	@ManyToOne
+	@JoinColumn(name = "category_id")
+	private ProductCategory productCategory;
+	
+	
 	
 }

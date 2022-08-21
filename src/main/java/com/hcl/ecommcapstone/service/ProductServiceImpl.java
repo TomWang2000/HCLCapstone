@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hcl.ecommcapstone.dto.ProductDto;
-import com.hcl.ecommcapstone.dto.UserDto;
 import com.hcl.ecommcapstone.entity.Product;
-import com.hcl.ecommcapstone.entity.User;
+import com.hcl.ecommcapstone.entity.ProductCategory;
 import com.hcl.ecommcapstone.repository.ProductRepository;
 
 @Service
@@ -18,13 +17,6 @@ public class ProductServiceImpl implements ProductService{
 	
 	@Autowired
 	ProductRepository productRepository;
-	
-	@Override
-	public Product addProduct(ProductDto productDto) {
-		Product product = new Product();
-		BeanUtils.copyProperties(productDto, product);
-		return productRepository.save(product);
-	}
 
 	@Override
 	public Product getProduct(Long productId) {
@@ -47,13 +39,28 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
-	public Product updateProduct(ProductDto productDto) {
+	public Product updateProduct(ProductDto productDto, ProductCategory productCategory) {
 		Product product = getProduct(productDto.getProductId());
 		if(product != null) {
 			BeanUtils.copyProperties(productDto, product);
+			product.setProductCategory(productCategory);
 			return productRepository.save(product);
 		}
 		return null;
+	}
+
+	@Override
+	public Product addProduct(ProductDto productDto, ProductCategory productCategory) {
+		Product product = new Product();
+		BeanUtils.copyProperties(productDto, product);
+		product.setProductCategory(productCategory);
+		return productRepository.save(product);
+	}
+
+	@Override
+	public Product findById(Long productId) {
+		Optional<Product> product = productRepository.findById(productId);
+		return product.get();
 	}
 	
 }

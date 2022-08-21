@@ -1,6 +1,6 @@
 package com.hcl.ecommcapstone.dto;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,11 +17,12 @@ public class UserDto {
 
 	private String cell;
 
-	private Date date_of_birth;
+	private LocalDate date_of_birth;
 
 	private String email;
 
 	private String username;
 
 	private String password;
+	
 }

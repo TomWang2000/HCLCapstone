@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hcl.ecommcapstone.dto.ProductCategoryDto;
-import com.hcl.ecommcapstone.entity.Product;
 import com.hcl.ecommcapstone.entity.ProductCategory;
 import com.hcl.ecommcapstone.repository.ProductCategoryRepository;
 

@@ -24,17 +24,5 @@ public class ProductCategory {
 	@Column(name = "category_name")
 	private String categoryname;
 	
-	public Long getCategoryId() {
-		return categoryid;
-	}
-	public void setCategoryId(Long categoryid) {
-		this.categoryid = categoryid;
-	}
 	
-	public String getCategoryName() {
-		return categoryname;
-	}
-	public void setCategoryName(String categoryname) {
-		this.categoryname = categoryname;
-	}
 }

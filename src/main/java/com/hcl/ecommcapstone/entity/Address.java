@@ -1,6 +1,7 @@
 package com.hcl.ecommcapstone.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,8 +18,9 @@ import lombok.Setter;
 public class Address {
 
 	@Id
+	@Column(name = "address_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long addressId;
 	
 	@Column(name = "street")
 	private String street;
@@ -35,43 +37,4 @@ public class Address {
 	@Column(name = "zip")
 	private int zip;
 	
-	public String getStreet() {
-		return street;
-	}
-	
-	public void setStreet(String street) {
-		this.street = street;
-	}
-	
-	public String getSecondary() {
-		return secondary;
-	}
-	
-	public void setSecondary(String secondary) {
-		this.secondary = secondary;
-	}
-	
-	public String getCity() {
-		return city;
-	}
-	
-	public void setCity(String city) {
-		this.city = city;
-	}
-	
-	public String getState() {
-		return state;
-	}
-	
-	public void setState(String state) {
-		this.state = state;
-	}
-	
-	public int getZip() {
-		return zip;
-	}
-
-	public void setZip(int zip) {
-		this.zip = zip;
-	}
 }
