@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hcl.ecommcapstone.dto.AddressDto;
 import com.hcl.ecommcapstone.dto.InvoiceDto;
 import com.hcl.ecommcapstone.entity.Address;
 import com.hcl.ecommcapstone.entity.Invoice;
 import com.hcl.ecommcapstone.entity.User;
 import com.hcl.ecommcapstone.repository.AddressRepository;
 import com.hcl.ecommcapstone.repository.UserRepository;
+import com.hcl.ecommcapstone.service.AddressService;
 import com.hcl.ecommcapstone.service.InvoiceService;
+import com.hcl.ecommcapstone.service.UserService;
+import com.hcl.ecommcapstone.service.UserServiceImpl;
 
 @RestController
 public class InvoiceController {
@@ -31,19 +35,28 @@ public class InvoiceController {
 	
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	UserService userService;
+	
+	@Autowired
+	AddressService addressService;
 
 	@PostMapping("/invoice/add")
 	public Invoice addInvoice(@RequestBody InvoiceDto invoiceDto) {
-		Optional<Address> optionalAddress = addressRepository.findById(invoiceDto.getDeliverAddress());
-		Optional<User> optionalUser = userRepository.findById(invoiceDto.getUserId());
-		return invoiceService.addInvoice(invoiceDto, optionalAddress.get(), optionalUser.get());
+		return invoiceService.addInvoice(invoiceDto);
+	}
+	
+	@PostMapping("/invoice/address")
+	public Address addInvoice(@RequestParam Long orderId, @RequestBody AddressDto addressDto) {
+		Optional<Address> optionalAddress = addressRepository.findById(addressDto.getAddressId());
+		return invoiceService.addAddress(addressDto, optionalAddress.get());
 	}
 
 	@PostMapping("/invoice/update")
 	public Invoice updateInvoice(@RequestBody InvoiceDto invoiceDto) {
-		Optional<Address> optionalAddress = addressRepository.findById(invoiceDto.getDeliverAddress());
 		Optional<User> optionalUser = userRepository.findById(invoiceDto.getUserId());
-		return invoiceService.addInvoice(invoiceDto, optionalAddress.get(), optionalUser.get());
+		return invoiceService.addInvoice(invoiceDto, optionalUser.get());
 	}
 
 	@GetMapping("/invoice/{orderId}")
